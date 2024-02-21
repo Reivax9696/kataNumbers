@@ -1,28 +1,26 @@
 <?php
 
+function containsNumber($number, $numberToFind) {
+    $thisNumber = $number;
 
-$number = 235;         
-$numberToFind = 8;    
+    while ($thisNumber != 0) {
+        $thisDigit = $thisNumber % 10;
+        $thisNumber = $thisNumber / 10;
 
-$thisNumber = $number; 
+        if ($thisDigit == $numberToFind) {
+            return $number . " contains the number " . $numberToFind;
+        }
+    }
 
-while ($thisNumber != 0)
-{
-    $thisDigit = $thisNumber % 10; 
-    $thisNumber = $thisNumber / 10; 
-    
-    if ($thisDigit == $numberToFind)
-    {
-        echo $number . " contains the number " . $numberToFind;
-        break;
+    if ($thisNumber == 0 && $thisDigit != $numberToFind) {
+        return $number . " does not contain the number " . $numberToFind;
     }
 }
 
-if ($thisNumber == 0 && $thisDigit != $numberToFind)
-{
-    echo $number . " does not contain the number " . $numberToFind;
-}
+$number = 235;
+$numberToFind = 8;
 
-
+$result = containsNumber($number, $numberToFind);
+echo $result;
 
 ?>
